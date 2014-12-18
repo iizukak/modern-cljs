@@ -1,10 +1,6 @@
 # modern-cljs
 
-A Clojure library designed to ... well, that part is up to you.
-
-## Usage
-
-FIXME
+An implementation of [Modern ClojureScript](https://github.com/magomimmo/modern-cljs)
 
 ## License
 
