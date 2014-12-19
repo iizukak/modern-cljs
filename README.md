@@ -4,7 +4,6 @@ An implementation of [Modern ClojureScript](https://github.com/magomimmo/modern-
 
 
 ## Usage
-
 Add `[lein-ring "0.8.13"]` to your `~/.lein/profile.clj`
 
 ```
