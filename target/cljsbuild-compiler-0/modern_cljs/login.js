@@ -1,7 +1,9 @@
 // Compiled by ClojureScript 0.0-2173
 goog.provide('modern_cljs.login');
 goog.require('cljs.core');
-modern_cljs.login.validate_form = (function validate_form(){var email = document.getElementById("email");var password = document.getElementById("password");if(((cljs.core.count.call(null,email.value) > 0)) && ((cljs.core.count.call(null,password.value) > 0)))
+goog.require('domina');
+goog.require('domina');
+modern_cljs.login.validate_form = (function validate_form(){var email = domina.by_id.call(null,"email");var password = domina.by_id.call(null,"password");if(((cljs.core.count.call(null,domina.value.call(null,email)) > 0)) && ((cljs.core.count.call(null,domina.value.call(null,password)) > 0)))
 {return true;
 } else
 {alert("Please, complete the form!");

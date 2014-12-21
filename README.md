@@ -5,6 +5,8 @@ An implementation of [Modern ClojureScript](https://github.com/magomimmo/modern-
 
 ## Usage
 
+Add `[lein-ring "0.8.13"]` to your `~/.lein/profile.clj`
+
 ```
 # Build Project
 $ lein do cljsbuild clean, cljsbuild once
@@ -12,14 +14,19 @@ $ lein do cljsbuild clean, cljsbuild once
 # Run bREPL
 $ lein trampoline cljsbuild repl-listen
 
-# Run Python HttpServer
-$ cd /path/to/modern-cljs/resources/public
-$ python -m SimpleHTTPServer 8888
-
 # Run Ring
 $ lein ring server
-http://localhost:3000/
+# then access http://localhost:3000/
 ```
+
+## dependent libraries
+
+- lein-cljsbuild
+  - Build CLJ to CLJS
+- composure
+  - lightweight webapplication framework
+- ring
+  - routing library
 
 ## License
 
