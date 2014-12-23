@@ -15,18 +15,21 @@
   :plugins [[lein-cljsbuild "1.0.2"]]
 
   :ring {:handler modern-cljs.core/handler}
+  :cljsbuild
 
-  ;; cljsbuild options configuration
-  :cljsbuild {:builds
-              [{;; CLJS source code path
-                :source-paths ["src/cljs"]
+  {:builds
+  ;; login.js build
+  {:login
+   {:source-paths ["src/cljs/login"]
+    :compiler
+    {:output-to "resources/public/js/login.js"
+     :optimizations :whitespace
+     :pretty-print true}}
+   ;; shopping.js build
+   :shopping
+  {:source-paths ["src/cljs/shopping"]
+    :compiler
+    {:output-to "resources/public/js/shopping.js"
+     :optimizations :whitespace
+     :pretty-print true}}}})
 
-                ;; Google Closure (CLS) options configuration
-                :compiler {;; CLS generated JS script filename
-                           :output-to "resources/public/js/modern.js"
-
-                           ;; minimal JS optimization directive
-                           :optimizations :whitespace
-
-                           ;; generated JS code prettyfication
-                           :pretty-print true}}]})

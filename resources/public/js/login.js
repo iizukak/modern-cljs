@@ -29511,19 +29511,21 @@ if (cljs.core.truth_(typeof HTMLCollection != "undefined")) {
   };
 } else {
 }
-;goog.provide("modern_cljs.shopping");
+;goog.provide("modern_cljs.login");
 goog.require("cljs.core");
 goog.require("domina");
 goog.require("domina");
-modern_cljs.shopping.calculate = function calculate() {
-  var quantity = domina.value.call(null, domina.by_id.call(null, "quantity"));
-  var price = domina.value.call(null, domina.by_id.call(null, "price"));
-  var tax = domina.value.call(null, domina.by_id.call(null, "tax"));
-  var discount = domina.value.call(null, domina.by_id.call(null, "discount"));
-  domina.set_value_BANG_.call(null, domina.by_id.call(null, "total"), (quantity * price * (1 + tax / 100) - discount).toFixed(2));
-  return false;
+modern_cljs.login.validate_form = function validate_form() {
+  var email = domina.by_id.call(null, "email");
+  var password = domina.by_id.call(null, "password");
+  if (cljs.core.count.call(null, domina.value.call(null, email)) > 0 && cljs.core.count.call(null, domina.value.call(null, password)) > 0) {
+    return true;
+  } else {
+    alert("Please, complete the form!");
+    return false;
+  }
 };
-modern_cljs.shopping.init = function init() {
+modern_cljs.login.init = function init() {
   if (cljs.core.truth_(function() {
     var and__3431__auto__ = document;
     if (cljs.core.truth_(and__3431__auto__)) {
@@ -29532,13 +29534,13 @@ modern_cljs.shopping.init = function init() {
       return and__3431__auto__;
     }
   }())) {
-    var theForm = document.getElementById("shoppingForm");
-    return theForm.onsubmit = modern_cljs.shopping.calculate;
+    var login_form = document.getElementById("loginForm");
+    return login_form.onsubmit = modern_cljs.login.validate_form;
   } else {
     return null;
   }
 };
-window.onload = modern_cljs.shopping.init;
+goog.exportSymbol("modern_cljs.login.init", modern_cljs.login.init);
 goog.provide("goog.events.EventTarget");
 goog.require("goog.Disposable");
 goog.require("goog.events");
@@ -34595,39 +34597,6 @@ clojure.browser.net.xpc_connection = function() {
   xpc_connection.cljs$core$IFn$_invoke$arity$1 = xpc_connection__1;
   return xpc_connection;
 }();
-goog.provide("modern_cljs.modern");
-goog.require("cljs.core");
-document.write("Hello, ClojureScript!");
-goog.provide("modern_cljs.login");
-goog.require("cljs.core");
-goog.require("domina");
-goog.require("domina");
-modern_cljs.login.validate_form = function validate_form() {
-  var email = domina.by_id.call(null, "email");
-  var password = domina.by_id.call(null, "password");
-  if (cljs.core.count.call(null, domina.value.call(null, email)) > 0 && cljs.core.count.call(null, domina.value.call(null, password)) > 0) {
-    return true;
-  } else {
-    alert("Please, complete the form!");
-    return false;
-  }
-};
-modern_cljs.login.init = function init() {
-  if (cljs.core.truth_(function() {
-    var and__3431__auto__ = document;
-    if (cljs.core.truth_(and__3431__auto__)) {
-      return document.getElementById;
-    } else {
-      return and__3431__auto__;
-    }
-  }())) {
-    var login_form = document.getElementById("loginForm");
-    return login_form.onsubmit = modern_cljs.login.validate_form;
-  } else {
-    return null;
-  }
-};
-window.onload = modern_cljs.login.init;
 goog.provide("clojure.browser.repl");
 goog.require("cljs.core");
 goog.require("clojure.browser.event");
