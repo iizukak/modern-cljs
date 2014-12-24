@@ -15,21 +15,41 @@
   :plugins [[lein-cljsbuild "1.0.2"]]
 
   :ring {:handler modern-cljs.core/handler}
-  :cljsbuild
 
-  {:builds
-  ;; login.js build
-  {:login
-   {:source-paths ["src/cljs/login"]
-    :compiler
-    {:output-to "resources/public/js/login.js"
-     :optimizations :whitespace
-     :pretty-print true}}
-   ;; shopping.js build
-   :shopping
-  {:source-paths ["src/cljs/shopping"]
-    :compiler
-    {:output-to "resources/public/js/shopping.js"
-     :optimizations :whitespace
-     :pretty-print true}}}})
+  :cljsbuild {:builds
+              {:dev
+               {;; clojurescript source code path
+                :source-paths ["src/brepl" "src/cljs"] ; "src/brepl"
 
+                ;; Google Closure Compiler options
+                :compiler {;; the name of emitted JS script file
+                           :output-to "resources/public/js/modern_dbg.js"
+
+                           ;; minimum optimization
+                           :optimizations :whitespace
+                           ;; prettyfying emitted JS
+                           :pretty-print true}}
+               :pre-prod
+               {;; clojurescript source code path
+                :source-paths ["src/brepl" "src/cljs"] ; added "src/brepl"
+
+                :compiler {;; different JS output name
+                           :output-to "resources/public/js/modern_pre.js"
+
+                           ;; simple optimization
+                           :optimizations :simple
+
+                           ;; no need prettyfication
+                           :pretty-print false}}
+               :prod
+               {;; clojurescript source code path
+                :source-paths ["src/cljs"] ;; no "src/brepl"
+
+                :compiler {;; different JS output name
+                           :output-to "resources/public/js/modern.js"
+
+                           ;; advanced optimization
+                           :optimizations :advanced
+
+                           ;; no need prettyfication
+                           :pretty-print false}}}})
