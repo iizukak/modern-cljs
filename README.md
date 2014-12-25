@@ -7,20 +7,11 @@ An implementation of [Modern ClojureScript](https://github.com/magomimmo/modern-
 Add `[lein-ring "0.8.13"]` to your `~/.lein/profile.clj`
 
 ```
-lein do clean, cljsbuild clean, cljsbuild once
+lein do clean, cljsbuild clean, lein cljsbuild auto dev
 lein ring server # from the project home directory
 lein trampoline cljsbuild repl-listen # from the project home directory in a new terminal
 # then access http://localhost:3000/
 ```
-
-## dependent libraries
-
-- lein-cljsbuild
-  - Build CLJ to CLJS
-- composure
-  - lightweight webapplication framework
-- ring
-  - routing library
 
 ## License
 
