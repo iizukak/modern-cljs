@@ -7,9 +7,11 @@ An implementation of [Modern ClojureScript](https://github.com/magomimmo/modern-
 Add `[lein-ring "0.8.13"]` to your `~/.lein/profile.clj`
 
 ```
-lein do clean, cljsbuild clean, lein cljsbuild auto dev
-lein ring server # from the project home directory
-lein trampoline cljsbuild repl-listen # from the project home directory in a new terminal
+lein cljsbuild clean
+lein clean
+lein cljsbuild once
+lein ring server
+lein trampoline cljsbuild repl-listen
 # then access http://localhost:3000/
 ```
 
