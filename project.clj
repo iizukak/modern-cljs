@@ -10,12 +10,14 @@
                  [org.clojure/clojurescript "0.0-2173"],
                  [compojure "1.3.1"],
                  [domina "1.0.3"],
-                 [hiccups "0.2.0"]]
+                 [hiccups "0.2.0"],
+                 [org.clojars.magomimmo/shoreleave-remote-ring "0.3.1-SNAPSHOT"],
+                 [org.clojars.magomimmo/shoreleave-remote "0.3.1-SNAPSHOT"]]
 
   ;; lein-cljsbuild plugin to build a CLJS project
   :plugins [[lein-cljsbuild "1.0.2"]]
 
-  :ring {:handler modern-cljs.core/handler}
+  :ring {:handler modern-cljs.remotes/app}
 
   :cljsbuild {:builds
               {:dev
